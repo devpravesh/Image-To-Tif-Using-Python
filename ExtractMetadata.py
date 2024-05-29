@@ -1,5 +1,6 @@
 from PIL import Image
 from PIL.TiffTags import TAGS
+import exifread
 import os
 
 
@@ -8,14 +9,16 @@ def save_tiff_metadata(tiff_path, output_path):
         # Open the TIFF image
         with Image.open(tiff_path) as img:
             # Extract metadata
+            # tags = exifread.process_file(img)
+            # print(tags)
             metadata = img.tag_v2
-
+            # print(metadata.items())
             # Open the output file for writing
             with open(output_path, 'w') as f:
                 # Write metadata to the file
                 for tag, value in metadata.items():
                     tag_name = TAGS.get(tag, tag)
-                    f.write(f"{tag_name}: {value}\n")
+                    f.write(f"{tag}: {value}")
 
         print(f"Metadata successfully saved to {output_path}")
     except Exception as e:

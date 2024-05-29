@@ -51,7 +51,7 @@
 from PIL import Image, TiffTags
 
 # Open the TIFF file
-tiff_image_path = 'IMG_0003_1.tif'
+tiff_image_path = 'TIF/output_image_with_metadata.tif'
 tiff_image = Image.open(tiff_image_path)
 
 # Print TIFF metadata

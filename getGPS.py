@@ -1,10 +1,12 @@
 import exifread
+import json
 
-
-# output_path = "TIF/metadata.txt"
+# output_path = "TIF/metadata1.txt"
 def get_gps_data(file_path):
     with open(file_path, 'rb') as f:
         tags = exifread.process_file(f)
+        # with open(output_path, 'w') as m:
+        #     m.write(json.dumps(tags))
         print(tags)
         gps_latitude = tags.get('GPS GPSLatitude')
         gps_latitude_ref = tags.get('GPS GPSLatitudeRef')
@@ -43,7 +45,9 @@ def get_gps_data(file_path):
 
 
 # Path to the uploaded file
-file_path = "IMG_0003_1.tif"
+# file_path = "TIF/output_image_with_metadata.tif"
+file_path = "TIF/output_image_with_metadata.tif"
+# file_path = "new.jpg"
 
 # Call the function
 get_gps_data(file_path)
